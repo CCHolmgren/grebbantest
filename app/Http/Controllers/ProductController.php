@@ -26,7 +26,7 @@ class ProductController extends Controller
      * ])
      * returns "Bikes > Electric bikes"
      */
-    public function resolveName(string $key, Arrayable $attributes): string
+    protected function resolveName(string $key, Arrayable $attributes): string
     {
         $sections = substr_count($key, '_');
         $name = $attributes[$key];
@@ -74,10 +74,6 @@ class ProductController extends Controller
             ->take($page_size);
 
         $attributes = collect($attributes)->mapWithKeys(function ($attribute) {
-            usort($attribute['values'], function ($a, $b) {
-                return $a['code'] <=> $b['code'];
-            });
-
             $values = collect($attribute['values'])->mapWithKeys(function ($attribute) {
                 return [$attribute['code'] => $attribute['name']];
             });
