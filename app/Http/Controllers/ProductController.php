@@ -95,6 +95,9 @@ class ProductController extends Controller
                         $newAttributes = [];
 
                         foreach ($values as $value) {
+                            if (!isset($attributes[$index])) {
+                                abort(500);
+                            }
                             $name = $this->resolveName($value, $attributes[$index]['items']);
 
                             $newAttributes[] = [
