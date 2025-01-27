@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+	src: url('/fonts/OpenSans-VariableFont_wdth,wght.woff2') format('woff2');
+	font-weight: 100 1000;
+	font-stretch: 25% 151%;
+}
