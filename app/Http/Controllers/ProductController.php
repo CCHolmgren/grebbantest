@@ -100,7 +100,7 @@ class ProductController extends Controller
 
                         foreach ($values as $value) {
                             if (!isset($attributes[$index])) {
-                                abort(500, 'Attribute not found: ' . $index);
+                                abort(500, 'Attribute type not found: ' . $index);
                             }
                             $name = $this->resolveName($value, $attributes[$index]['items']);
 

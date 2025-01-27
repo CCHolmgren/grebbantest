@@ -122,7 +122,7 @@ it('handles missing categories', function () {
 
     $response->assertInternalServerError();
 
-    expect($response['message'])->toBe('Attribute not found: color');
+    expect($response['message'])->toBe('Attribute type not found: color');
 });
 
 it('handles missing parent category', function () {
