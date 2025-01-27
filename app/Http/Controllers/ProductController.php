@@ -29,7 +29,11 @@ class ProductController extends Controller
     protected function resolveName(string $key, Arrayable $attributes): string
     {
         $sections = substr_count($key, '_');
-        $name = $attributes[$key];
+        $name = $attributes[$key] ?? null;
+
+        if ($name === null) {
+            abort(500, 'Attribute not found: ' . $key);
+        }
 
         if ($sections < 2) {
             return $name;
@@ -96,7 +100,7 @@ class ProductController extends Controller
 
                         foreach ($values as $value) {
                             if (!isset($attributes[$index])) {
-                                abort(500);
+                                abort(500, 'Attribute not found: ' . $index);
                             }
                             $name = $this->resolveName($value, $attributes[$index]['items']);
 
